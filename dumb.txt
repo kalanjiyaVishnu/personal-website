@@ -1,0 +1,97 @@
+html 
+{
+    
+body {
+        font-family: Arial, Helvetica, sans-serif;
+        
+    
+}
+
+div.centreh2 {
+    font-family:Helvetica;
+    font-weight: bold;
+    color: rgb(0, 76, 255); 
+    font-size: 1.9em;
+}
+div.centreh2 h2 
+{
+    color: rgb(0, 76, 255); 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.outer {
+  width: 100%;
+line-height: 1;
+  color: white;
+  
+  position: relative;
+  
+  ,margin: 0;
+  padding: 10px;
+}
+
+.inner {
+  top:50%;
+  text-align: center;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 8px;  
+  padding-bottom: 0px;
+}
+
+h1 { 
+  margin-bottom: 0px;
+  margin-top: 0px;
+  float: left;
+  /*display: inline;*/
+  color: rgb(0, 76, 255);
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+  
+  overflow: hidden;
+ 
+}
+.container:hover:not(.inner)
+{
+    border-bottom: 2px solid tomato ; 
+    border-radius: 1px;
+}
+
+li { 
+text-align: center;
+  display: block;
+  float: left;
+  flex-direction: column-reverse;
+
+
+}
+li a{
+  display: block;
+  color: #666;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 8px;  
+  text-decoration: none;
+  font-size: large;
+}
+ul {
+  float: right;
+  list-style-type: none;
+}
+
+
+li a:hover:not(.active) {
+  color: #ddd;
+}
+
+li a.active {
+  color: tomato;
+  
+}
