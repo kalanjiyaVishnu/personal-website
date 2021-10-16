@@ -31,7 +31,7 @@ header .outer h1 {
 header .outer .inner {
   top: 50%;
   padding-top: 6px;
-  float: right;
+  float: right; 
 }
 
 header .outer .inner ul {
