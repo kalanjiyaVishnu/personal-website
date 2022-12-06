@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
+import _ from "lodash"
 
 import {
   FaBeer,
@@ -115,8 +116,8 @@ const Dropdown: React.FC<{
   }) => {
     return (
       <>
-        {mobileTitles.map((x) => (
-          <DropdownItem text={x.title} left={x.icon} />
+        {_.map(mobileTitles, (x, idx) => (
+          <DropdownItem key={idx} text={x.title} left={x.icon} />
         ))}
       </>
     )
