@@ -24,14 +24,13 @@ body {
   margin: 0;
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
 }
 
 body {
-  color: #dadce4;
-  background-color: var(--bg-light);
-  color: var(--fg-light);
-  padding: 0;
-  margin: 0 auto;
+  @apply bg-gray-100;
+  @apply text-gray-900;
+
   scroll-behavior: smooth;
   height: 100vh;
   min-height: 100vh;

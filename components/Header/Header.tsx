@@ -4,6 +4,7 @@ import _ from "lodash"
 import {
   FaBeer,
   FaCoffee,
+  FaCogs,
   FaPaperPlane,
   FaHome,
   FaBolt,
@@ -49,7 +50,9 @@ const Navbar: React.FC<{
 }> = (props) => {
   return (
     <nav className={styles.navbar}>
-      <span className={styles.brand}>r1558</span>
+      <Link href="/" className={styles.brand}>
+        r1558
+      </Link>
       <ul className={styles.navbar_nav}>{props.children}</ul>
     </nav>
   )
@@ -73,7 +76,7 @@ const NavItem: React.FC<{
           setopen(!open)
         }}
       >
-        {props.iconto ? open ? props.iconto : props.icon : <>{props.icon}</>}
+        {props.iconto && open ? props.iconto : props.icon}
       </Link>
 
       {open && props.children}
@@ -84,9 +87,9 @@ function NavItems() {
   return (
     <>
       <NavItem icon={<FaHome />} path_name="/home" text="home" />
-      <NavItem icon={<FaBeer />} path_name="/youtube" text="youtube" />
+      <NavItem icon={<FaBeer />} path_name="/contact-me" text="youtube" />
       <NavItem icon={<FaBolt />} path_name="/projects" text="projects" />
-      <NavItem icon="😎" path_name="/contact" text="contact" />
+      <NavItem icon="😎" path_name="/me" text="contact" />
     </>
   )
 }
@@ -125,11 +128,8 @@ const Dropdown: React.FC<{
   return (
     <div className={styles.dropdown}>
       {wid <= 600 && <DropdownItemMobile mobileTitles={mobileTitles} />}
-      <DropdownItem text="but me a coffee" left={<FaCoffee />} />
-      <DropdownItem
-        text="setting"
-        left={<i className={`${styles.fas} ${styles["fa-cog"]}`}></i>}
-      />
+      <DropdownItem text="buy me a coffee" left={<FaCoffee />} />
+      <DropdownItem text="setting" left={<FaCogs />} />
     </div>
   )
 }
