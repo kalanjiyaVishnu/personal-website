@@ -1,8 +1,4 @@
-function Contacts(){
-    return(
-        <div className='Contacts mar-2'>
-            Contacts section
-        </div>
-    )
+function Contacts() {
+  return <div className="Contacts mar-2">Contacts section</div>
 }
-export default Contacts;
+export default Contacts

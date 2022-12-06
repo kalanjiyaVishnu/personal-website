@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { useLocation } from "react-router";
-import "./Header_fb.css";
+import React, { useState, useEffect, useLayoutEffect } from "react"
+import { useLocation } from "react-router"
+import "./Header_fb.css"
 
 import {
   FaBeer,
@@ -11,30 +11,30 @@ import {
   FaBolt,
   FaCaretRight,
   FaCaretDown,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
+} from "react-icons/fa"
+import { Link } from "react-router-dom"
 function Header_fb() {
-  const loca = useLocation().pathname;
-  const [wid, setwidth] = useState("");
+  const loca = useLocation().pathname
+  const [wid, setwidth] = useState("")
   const [mob_title, setmob_title] = useState([
     { title: "home", icon: <FaHome /> },
     { title: "projects", icon: <FaBolt /> },
     { title: "contacts", icon: <FaPaperPlane /> },
-  ]);
+  ])
 
   useEffect(() => {
-    window.addEventListener("resize", set_wid);
-    console.log("getting the navbar width");
-    set_wid();
+    window.addEventListener("resize", set_wid)
+    console.log("getting the navbar width")
+    set_wid()
     return () => {
-      console.log("clean up ");
-      window.removeEventListener("resize", set_wid);
-    };
-  }, []);
+      console.log("clean up ")
+      window.removeEventListener("resize", set_wid)
+    }
+  }, [])
   const set_wid = () => {
-    setwidth(document.body.querySelector(".navbar").clientWidth);
-  };
-  console.log("rendered the navbar");
+    setwidth(document.body.querySelector(".navbar").clientWidth)
+  }
+  console.log("rendered the navbar")
 
   return (
     <Navbar>
@@ -50,7 +50,7 @@ function Header_fb() {
 
       {/* last - dropdown */}
     </Navbar>
-  );
+  )
 }
 function Navbar(props) {
   return (
@@ -58,10 +58,10 @@ function Navbar(props) {
       <span className="brand">r1558</span>
       <ul className="navbar_nav">{props.children}</ul>
     </nav>
-  );
+  )
 }
 function NavItem(props) {
-  const [open, setopen] = useState(false);
+  const [open, setopen] = useState(false)
 
   return (
     <li className="nav-item">
@@ -69,7 +69,7 @@ function NavItem(props) {
         to={props.path_name}
         className="icon"
         onClick={() => {
-          setopen(!open);
+          setopen(!open)
         }}
       >
         {props.iconto ? open ? props.iconto : props.icon : <>{props.icon}</>}
@@ -77,7 +77,7 @@ function NavItem(props) {
 
       {open && props.children}
     </li>
-  );
+  )
 }
 function NavItems() {
   return (
@@ -87,7 +87,7 @@ function NavItems() {
       <NavItem icon={<FaBolt />} path_name="/projects" text="projects" />
       <NavItem icon="😎" path_name="/contact" text="contact" />
     </>
-  );
+  )
 }
 function Dropdown({ mob_title, wid }) {
   function DropdownItem(props) {
@@ -98,7 +98,7 @@ function Dropdown({ mob_title, wid }) {
 
         <span className="iconright">{props.right} </span>
       </Link>
-    );
+    )
   }
   function DropdownItemMobile({ mob_title }) {
     return (
@@ -107,15 +107,15 @@ function Dropdown({ mob_title, wid }) {
           <DropdownItem text={x.title} left={x.icon} />
         ))}
       </>
-    );
+    )
   }
-  console.log(mob_title);
+  console.log(mob_title)
   return (
     <div className="dropdown">
       {wid <= 600 && <DropdownItemMobile mob_title={mob_title} />}
       <DropdownItem text="but me a coffee" left={<FaCoffee />} />
       <DropdownItem text="setting" left={<i className="fas fa-cog"></i>} />
     </div>
-  );
+  )
 }
-export default Header_fb;
+export default Header_fb

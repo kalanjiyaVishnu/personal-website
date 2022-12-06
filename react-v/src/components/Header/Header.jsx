@@ -1,8 +1,8 @@
-import "./Header.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import "./Header.css"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 function Header(props) {
-  const [show, setshow] = useState(false);
+  const [show, setshow] = useState(false)
   return (
     <div className="header">
       <div className="header__brand">
@@ -11,8 +11,8 @@ function Header(props) {
       <button
         className="hide_btn"
         onClick={() => {
-          setshow(!show);
-          console.log(show);
+          setshow(!show)
+          console.log(show)
         }}
       >
         {">menu"}
@@ -34,6 +34,6 @@ function Header(props) {
         </ul>
       </div>
     </div>
-  );
+  )
 }
-export default Header;
+export default Header
