@@ -15,8 +15,7 @@
     align-items: center;
     background-color: var(--bg);
     border-bottom: var(--border);
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
     height: var(--nav-size);
 }
 
