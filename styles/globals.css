@@ -3,15 +3,11 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
   --bg-dark-g: #222;
   --bg-light: #fff;
-
   --fg-light: #fff;
   --btn-bg: #fff;
   --btn-fg: #262524;
-
-  /* nav */
   --bg: #262524;
   --bg-l: rgb(48, 48, 48);
   --border: 1px solid darkgrey;
@@ -20,20 +16,8 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
-}
-
-body {
-  @apply bg-gray-100;
-  @apply text-gray-900;
-
-  scroll-behavior: smooth;
-  height: 100vh;
-  min-height: 100vh;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply bg-gray-100 p-0 m-0 text-gray-900 scroll-m-0 h-screen min-h-screen scroll-smooth;
 }
 
 a {
@@ -48,4 +32,26 @@ ul {
   text-decoration: none;
   margin: 0;
   padding: 0;
+}
+
+@layer components {
+  .timeline {
+    @apply border-l-2 border-gray-200 ml-2 mt-3 py-8 space-y-14 border-opacity-30
+  }
+
+  .dot {
+    @apply absolute w-4 h-4 bg-neutral-900 rounded-full border-2 border-white border-opacity-30 top-4 -left-[8.4px]
+  }
+
+  .timeline-date {
+    @apply text-xs uppercase font-bold text-gray-500 opacity-40 tracking-widest;
+  }
+
+  .timeline-head {
+    @apply text-3xl font-bold tracking-wide text-gray-100 mb-2
+  }
+
+  .timeline-body {
+    @apply text-gray-400
+  }
 }
