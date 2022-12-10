@@ -1,3 +1,4 @@
+import { Skills } from "../components/Skills"
 import { Stepper } from "../components/Stepper"
 import { getTimeLines } from "../utils"
 
@@ -20,7 +21,7 @@ export default function Home() {
         </div>
       </main>
       <Me />
-      <Projects />
+      <Skills />
     </div>
   )
 }
@@ -73,8 +74,12 @@ const Rocket = () => (
     </svg>
   </div>
 )
-const Projects = () => (
-  <div className="bg-neutral-900 border-t h-screen text-white ">
-    <div className="w-4/5 m-auto pt-12">TOOL UP {" >"}</div>
-  </div>
-)
+// const Projects = () => (
+//   <div className="bg-neutral-900 border-t h-screen text-white ">
+//     <div className="p-16">
+//       <div className="text-sm rounded-sm md:ml-2 mt-3 py-2 px-10  text-center sm:text-left border-l-2 border-r-2 sm:border-r-0  border-gray-200">
+//         Things I know {" >"} . . .
+//       </div>
+//     </div>
+//   </div>
+// )

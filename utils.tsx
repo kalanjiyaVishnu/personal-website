@@ -22,13 +22,12 @@ export const getTimeLines = () => [
 export const getTools = () => ({
   ["1Programming-Languages"]: ["Python", "Js", "Golang", "Java", "C", "SQL"],
   ["2Backend"]: ["Nodejs", "express", "graphql"],
-  ["3Databases"]: ["mongo db", "postgres"],
-  ["4Frontend"]: ["React", "Angular", "Tailwindcss"],
-  ["5Technologies"]: [
+  ["3Frontend"]: ["React", "Angular", "Tailwindcss"],
+  ["4Databases & Technologies"]: [
+    "mongo db",
+    "postgres",
     "Firebase",
     "Git",
     "Docker",
-    "After Effects",
-    "Premiere Pro",
   ],
 })
