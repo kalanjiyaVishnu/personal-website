@@ -46,7 +46,7 @@ ul {
   .timeline-container {}
 
   .timeline {
-    @apply border-l-2 border-gray-200 ml-2 mt-3 py-8 space-y-14 border-opacity-30;
+    @apply border-l-2 border-gray-200 md:ml-2 mt-3 py-8 space-y-14 border-opacity-30;
   }
 
   .dot {

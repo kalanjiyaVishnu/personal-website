@@ -5,9 +5,11 @@ export default function Home() {
   return (
     <div className="h-screen">
       <Rocket />
-      <main className="w-4/5 m-auto pt-20 h-full flex items-center justify-center">
+      <main className="w-4/5 m-auto pt-20 h-full flex items-center justify-center z-50">
         <div className="flex  flex-col p-2 justify-center w-fit -mt-20">
-          <p className="text-6xl font-medium">`Developer,Youtuber`</p>
+          <p className="text-2xl md:text-6xl font-medium">
+            `Developer,Youtuber`
+          </p>
           <p className="text-sm text-end font-normal">-Yes i&apos;m</p>
           <a
             href="#me"
@@ -30,18 +32,19 @@ const Me = () => {
       id="me"
     >
       {/* <div className="w-full bg-white h-[2px] absolute top-0 left-0"></div> */}
-      <div className="flex flex-col gap-2 w-fit ml-auto">
+      <div className="flex flex-col mb-2 items-end flex-nowrap md:text-end  gap-2  md:w-fit ml-auto">
         <p
-          className="text-6xl font-extrabold"
+          className="text-4xl  md:text-6xl font-extrabold"
           style={{
             textShadow:
               "1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 10%)",
             fontFamily: "Inter",
+            overflowWrap: "normal",
           }}
         >
           Kalanjiya Vishnu .J
         </p>
-        <p className="text-sm font-normal text-end">
+        <p className="text-xs md:text-sm  font-normal flex-nowrap">
           A full stack developer, building things for web.
         </p>
       </div>
@@ -51,13 +54,15 @@ const Me = () => {
 }
 const TimeLine = () => (
   <>
-    <div>things i did in the past . . .</div>
+    <div className="text-sm rounded-sm md:ml-2 mt-3 py-2 px-10  text-center sm:text-left border-l-2 border-r-2 sm:border-r-0  border-gray-200">
+      Things i did in the past . . .
+    </div>
     <Stepper timeLines={getTimeLines()} />
   </>
 )
 
 const Rocket = () => (
-  <div className="absolute sm:top-40 sm:-left-40 opacity-85">
+  <div className="absolute top-40 -left-64  xl:block xl:top-40 xl:-left-40 opacity-85">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="#222"

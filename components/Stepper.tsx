@@ -22,7 +22,7 @@ export const Stepper: React.FC<{
               <span className="timeline-date">{date}</span>
               <div className="make-flex gap-4 items-center">
                 <h3 className="timeline-head">{title}</h3>
-                <div className="make-flex-c">
+                <div className="make-flex-c hidden md:block">
                   {tags?.map((tag) => (
                     <div className="tag">{tag}</div>
                   ))}
