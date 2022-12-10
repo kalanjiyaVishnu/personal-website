@@ -6,7 +6,6 @@ import {
   FaCoffee,
   FaCogs,
   FaPaperPlane,
-  FaHome,
   FaBolt,
   FaCaretRight,
   FaCaretDown,
@@ -15,13 +14,12 @@ import Link from "next/link"
 import styles from "./Header.module.css"
 
 const mobileTitles = [
-  { title: "home", icon: <FaHome /> },
-  { title: "projects", icon: <FaBolt /> },
-  { title: "contacts", icon: <FaPaperPlane /> },
+  // { title: "home", icon: <FaHome />, path: "/" },
+  { title: "projects", icon: <FaBolt />, path: "projects" },
+  { title: "contact", icon: <FaPaperPlane />, path: "contact" },
 ]
 export function Header() {
   const [width, setwidth] = useState<number>(0)
-  const navBar = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     window.addEventListener("resize", setWidthFromUi)
@@ -37,7 +35,7 @@ export function Header() {
   return (
     <Navbar>
       {width > 600 && <NavItems />}
-      <NavItem icon={<FaCaretRight />} iconto={<FaCaretDown />} path_name={"/"}>
+      <NavItem icon={<FaCaretRight />} iconto={<FaCaretDown />} path={"/"}>
         <Dropdown mobTitles={mobileTitles} wid={width} />
       </NavItem>
       {/* last - dropdown */}
@@ -61,7 +59,7 @@ const Navbar: React.FC<{
 const NavItem: React.FC<{
   icon: React.ReactNode
   iconto?: React.ReactNode
-  path_name: string
+  path: string
   children?: React.ReactNode
   text?: string
 }> = (props) => {
@@ -69,15 +67,15 @@ const NavItem: React.FC<{
 
   return (
     <li className={styles["nav-item"]}>
-      <Link
-        href={props.path_name}
+      <a
+        href={props.path}
         className={styles.icon}
         onClick={() => {
           setopen(!open)
         }}
       >
         {props.iconto && open ? props.iconto : props.icon}
-      </Link>
+      </a>
 
       {open && props.children}
     </li>
@@ -86,10 +84,9 @@ const NavItem: React.FC<{
 function NavItems() {
   return (
     <>
-      <NavItem icon={<FaHome />} path_name="/home" text="home" />
-      <NavItem icon={<FaBeer />} path_name="/contact-me" text="youtube" />
-      <NavItem icon={<FaBolt />} path_name="/projects" text="projects" />
-      <NavItem icon="😎" path_name="/me" text="contact" />
+      <NavItem icon="😎" path="#me" text="contact" />
+      <NavItem icon={<FaBolt />} path="/projects" text="projects" />
+      <NavItem icon={<FaBeer />} path="/contact-me" text="contact" />
     </>
   )
 }

@@ -7,7 +7,7 @@ export default function Home() {
       <main className="w-4/5 m-auto pt-20 h-full flex items-center justify-center">
         <div className="flex  flex-col p-2 justify-center w-fit -mt-20">
           <p className="text-6xl font-medium">`Developer,Youtuber`</p>
-          <p className="text-sm text-end font-normal">-Yes i'm</p>
+          <p className="text-sm text-end font-normal">-Yes i&apos;m</p>
           <a
             href="#me"
             className="btn-flip"
