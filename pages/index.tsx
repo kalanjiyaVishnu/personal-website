@@ -1,4 +1,5 @@
 import { Stepper } from "../components/Stepper"
+import { getTimeLines } from "../utils"
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         </div>
       </main>
       <Me />
+      <Projects />
     </div>
   )
 }
@@ -24,7 +26,7 @@ export default function Home() {
 const Me = () => {
   return (
     <div
-      className="bg-neutral-900 border-t-2 border-white borde text-white h-screen p-16 relative"
+      className="bg-neutral-900 border-t-2 border-white borde text-white h-auto p-16 relative"
       id="me"
     >
       {/* <div className="w-full bg-white h-[2px] absolute top-0 left-0"></div> */}
@@ -43,22 +45,16 @@ const Me = () => {
           A full stack developer, building things for web.
         </p>
       </div>
-      <div>things i did in the past . . .</div>
-      <div className="">
-        <Stepper
-          timeLines={[
-            {
-              title: "Something",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-              date: "SEP - 2020",
-            },
-          ]}
-        />
-      </div>
+      <TimeLine />
     </div>
   )
 }
+const TimeLine = () => (
+  <>
+    <div>things i did in the past . . .</div>
+    <Stepper timeLines={getTimeLines()} />
+  </>
+)
 
 const Rocket = () => (
   <div className="absolute sm:top-40 sm:-left-40 opacity-85">
@@ -70,5 +66,10 @@ const Rocket = () => (
     >
       <path d="M23 0l-4.5 16.5-6.097-5.43 5.852-6.175-7.844 5.421-5.411-1.316 18-9zm-11 12.501v5.499l2.193-3.323-2.193-2.176zm-8.698 6.825l-1.439-.507 5.701-5.215 1.436.396-5.698 5.326zm3.262 4.287l-1.323-.565 4.439-4.503 1.32.455-4.436 4.613zm-4.083.387l-1.481-.507 8-7.89 1.437.397-7.956 8z" />
     </svg>
+  </div>
+)
+const Projects = () => (
+  <div className="bg-neutral-900 border-t h-screen text-white ">
+    <div className="w-4/5 m-auto pt-12">TOOL UP {" >"}</div>
   </div>
 )
