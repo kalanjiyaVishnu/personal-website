@@ -43,6 +43,19 @@ const Me = () => {
           A full stack developer, building things for web.
         </p>
       </div>
+      <div>things i did in the past . . .</div>
+      <div className="">
+        <Stepper
+          timeLines={[
+            {
+              title: "Something",
+              description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+              date: "SEP - 2020",
+            },
+          ]}
+        />
+      </div>
     </div>
   )
 }
