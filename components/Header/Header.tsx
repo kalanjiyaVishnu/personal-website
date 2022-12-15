@@ -9,12 +9,13 @@ import {
   FaBolt,
   FaCaretRight,
   FaCaretDown,
+  FaHome,
 } from "react-icons/fa"
 import Link from "next/link"
 import styles from "./Header.module.css"
 
 const mobileTitles = [
-  // { title: "home", icon: <FaHome />, path: "/" },
+  { title: "#me", icon: <FaHome />, path: "#me" },
   { title: "projects", icon: <FaBolt />, path: "projects" },
   { title: "contact", icon: <FaPaperPlane />, path: "contact" },
 ]
@@ -70,8 +71,9 @@ const NavItem: React.FC<{
       <a
         href={props.path}
         className={styles.icon}
-        onClick={() => {
+        onClick={(e) => {
           setopen(!open)
+          return e.preventDefault()
         }}
       >
         {props.iconto && open ? props.iconto : props.icon}
