@@ -1,5 +1,6 @@
 import { Skills } from "../components/Skills"
 import { Stepper } from "../components/Stepper"
+import { Title } from "../components/Title"
 import { getTimeLines } from "../utils"
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
       </main>
       <Me />
       <Skills />
+      <Projects />
     </div>
   )
 }
@@ -33,22 +35,11 @@ const Me = () => {
       id="me"
     >
       {/* <div className="w-full bg-white h-[2px] absolute top-0 left-0"></div> */}
-      <div className="flex flex-col mb-2 items-end flex-nowrap md:text-end  gap-2  md:w-fit ml-auto">
-        <p
-          className="text-4xl  md:text-6xl font-extrabold"
-          style={{
-            textShadow:
-              "1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 10%)",
-            fontFamily: "Inter",
-            overflowWrap: "normal",
-          }}
-        >
-          Kalanjiya Vishnu .J
-        </p>
+      <Title title="Kalanjiya Vishnu .J" float="right">
         <p className="text-xs md:text-sm  font-normal flex-nowrap">
           A full stack developer, building things for web.
         </p>
-      </div>
+      </Title>
       <TimeLine />
     </div>
   )
@@ -74,12 +65,11 @@ const Rocket = () => (
     </svg>
   </div>
 )
-// const Projects = () => (
-//   <div className="bg-neutral-900 border-t h-screen text-white ">
-//     <div className="p-16">
-//       <div className="text-sm rounded-sm md:ml-2 mt-3 py-2 px-10  text-center sm:text-left border-l-2 border-r-2 sm:border-r-0  border-gray-200">
-//         Things I know {" >"} . . .
-//       </div>
-//     </div>
-//   </div>
-// )
+
+const Projects = () => (
+  <div className="bg-neutral-900 border-t h-screen text-white ">
+    <div className="p-16">
+      <Title title="Things I've built" float="left" />
+    </div>
+  </div>
+)
