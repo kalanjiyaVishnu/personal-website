@@ -1,3 +1,4 @@
+import { z } from "zod"
 export const getTimeLines = () => [
   {
     title: "Actual Job",
@@ -31,3 +32,55 @@ export const getTools = () => ({
     "Docker",
   ],
 })
+
+const Project = z.object({
+  title: z.string(),
+  description: z.string(),
+  category: z.array(z.string()),
+  tags: z.array(z.string()),
+  link: z.array(
+    z.object({
+      src: z.enum(["github", "live"]),
+      ref: z.string(),
+    })
+  ),
+  useCase: z.string().optional().nullable(),
+})
+export type Project = z.infer<typeof Project>
+
+export const getProjects: () => Project[] = () => [
+  {
+    title: "side-effects",
+    description: `A website where users can able to find information related to the anime they are looking for and can able to track
+    episodes they are currently in. It is also a place where users can interact with content like in a blog(able to send and
+    receive messages).`,
+    useCase: `Tried To build a community for anime - combined blog,chat,and search`,
+    category: ["Full Stack", "Featured"],
+    tags: ["React", "Nodejs", "Express", "MongoDB", "Firebase"],
+    link: [
+      { src: "github", ref: "https://casaretailai.com" },
+      { src: "live", ref: "https://casaretailai.com" },
+    ],
+  },
+  {
+    title: "Casa Retail Ai",
+    description: "A retail ai platform for retailers to manage their stores",
+    category: ["Full Stack", "Other"],
+    tags: ["React", "Nodejs", "Express", "MongoDB", "Firebase"],
+    link: [
+      { src: "github", ref: "https://casaretailai.com" },
+      { src: "live", ref: "https://casaretailai.com" },
+    ],
+  },
+]
+
+export const getProjectImages = (project: string): string[] => {
+  const projectImageMap: {
+    [key: string]: string[]
+  } = {
+    "side-effects": new Array(5)
+      .fill(0)
+      .map((_, i) => `/images/anime-finder-${i + 1}.png`),
+  }
+  return projectImageMap[project]
+}
