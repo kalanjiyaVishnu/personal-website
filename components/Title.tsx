@@ -21,17 +21,9 @@ export const Title: FC<{
   </div>
 )
 
-const getTitleClass = (float: "left" | "right") => {
-  console.log(
-    `flex flex-col bg-red-400 mb-2 ${
-      float === "left" ? "" : "items-end"
-    } flex-nowrap  ${
-      float === "left" ? "" : "text-end"
-    }  gap-2  md:w-fit mr-auto`
-  )
-  return `flex flex-col mb-2 ${
-    float === "left" ? "items-start" : "items-end"
-  } flex-nowrap  md:${
-    float === "left" ? "text-start" : "text-end"
-  }  gap-2  md:w-fit `
-}
+const getClassBasedOnFloat = (float: "left" | "right") =>
+  float === "right" ? "sm:items-end sm:text-end" : "sm:items-start"
+const getTitleClass = (float: "left" | "right") =>
+  `flex flex-col mb-2 ${getClassBasedOnFloat(
+    float
+  )} flex-nowrap gap-2  md:mr-auto  w-full`
