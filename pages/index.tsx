@@ -1,7 +1,17 @@
+import Image from "next/image"
 import { Skills } from "../components/Skills"
 import { Stepper } from "../components/Stepper"
 import { Title } from "../components/Title"
-import { getTimeLines } from "../utils"
+import {
+  getProjectImages,
+  getProjects,
+  getSrcIcon,
+  getTimeLines,
+  type Project,
+} from "../utils"
+import _ from "lodash"
+import { useEffect, useMemo, useState } from "react"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -67,9 +77,76 @@ const Rocket = () => (
 )
 
 const Projects = () => (
-  <div className="bg-neutral-900 border-t h-screen text-white ">
+  <div className="bg-neutral-900 border-t h-max text-white ">
     <div className="p-16">
       <Title title="Things I've built" float="left" />
+      <ProjectsContainer />
     </div>
   </div>
 )
+
+const ProjectsContainer = () => {
+  const renderProject: (p: Project) => JSX.Element = (p) => {
+    const [id, setId] = useState(1)
+    const projectImages = useMemo(() => getProjectImages(p.title), [])
+
+    useEffect(() => {
+      const intervel = setInterval(
+        () => setId((id) => (id % projectImages?.length ?? 1) + 1),
+        3000
+      )
+      return () => clearInterval(intervel)
+    }, [id, projectImages])
+
+    return (
+      <div className="grid p-4 md:grid-flow-col md:grid-cols-2 gap-4 h-auto overflow-hidden rounded-md bg-white bg-opacity-5">
+        <div className="p-2 flex flex-col justify-between">
+          <div>
+            <p className="text-xs">{p.category.join(" ")}</p>
+            <h1 className="text-4xl font-medium relative">
+              {p.title}{" "}
+              {/* <div className="absolute top-1/2 -translate-y-1/2 left-[43%] w-full h-1 bg-white"></div> */}
+            </h1>
+            <p className="text-sm mt-4 px-4 border-teal-300 border-l-4">
+              {p.description}
+            </p>
+            <div className="flex justify-end px-8 fill-slate-100">
+              {p.links.map((link) => (
+                <a href={link.ref} target="_blank">
+                  <div className="w-8 p-2 hover:opacity-90 opacity-70 transition-opacity transform duration-150">
+                    {getSrcIcon(link.type)}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="sm:mt-6 text-xs opacity-30">{p.tags.join("  ")}</div>
+        </div>
+        {p.category.includes("Featured") && (
+          <div className="rounded-md shadow-md overflow-hidden border-white border-2 border-opacity-10 opacity-70 hover:opacity-90  transition-opacity transform duration-300 ease-in-out ">
+            <div
+              className={`flex -translate-x-[${id}00%] transform-gpu transition-all duration-1000`}
+            >
+              {projectImages.map((src) => (
+                <Image
+                  className="rounded-md w-full h-full object-cover border border-black"
+                  src={src}
+                  alt="Your Name"
+                  width={1920}
+                  height={1080}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
+  return (
+    <>
+      <div className="flex flex-col gap-4 mt-10 h-screen">
+        {getProjects().map(renderProject)}
+      </div>
+    </>
+  )
+}
