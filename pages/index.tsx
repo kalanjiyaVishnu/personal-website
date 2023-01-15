@@ -104,7 +104,12 @@ const ProjectsContainer = () => {
             </p>
             <div className="flex justify-end px-8 fill-slate-100">
               {p.links.map((link, idx) => (
-                <a href={link.ref} target="_blank" key={`${p.title}-${idx}`}>
+                <a
+                  href={link.ref}
+                  rel="noreferrer"
+                  target="_blank"
+                  key={`${p.title}-${idx}`}
+                >
                   <div className="w-8 p-2 hover:opacity-90 opacity-70 transition-opacity transform duration-150">
                     {getSrcIcon(link.type)}
                   </div>
@@ -137,7 +142,7 @@ const Slider = ({ images }: { id: number; images: string[] }) => {
   useEffect(() => {
     const interval = setInterval(moveToNextSlid, 2000)
     return () => clearInterval(interval)
-  }, [id])
+  })
 
   const getWithd = () =>
     sliderRef.current ? sliderRef.current.clientWidth : 100
