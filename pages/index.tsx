@@ -10,8 +10,7 @@ import {
   type Project,
 } from "../utils"
 import _ from "lodash"
-import { useEffect, useMemo, useState } from "react"
-import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
   return (
@@ -87,19 +86,12 @@ const Projects = () => (
 
 const ProjectsContainer = () => {
   const renderProject: (p: Project) => JSX.Element = (p) => {
-    const [id, setId] = useState(1)
-    const projectImages = useMemo(() => getProjectImages(p.title), [])
-
-    useEffect(() => {
-      const intervel = setInterval(
-        () => setId((id) => (id % projectImages?.length ?? 1) + 1),
-        3000
-      )
-      return () => clearInterval(intervel)
-    }, [id, projectImages])
-
+    const projectImages = getProjectImages(p.title)
     return (
-      <div className="grid p-4 md:grid-flow-col md:grid-cols-2 gap-4 h-auto overflow-hidden rounded-md bg-white bg-opacity-5">
+      <div
+        className="grid p-4 md:grid-flow-col md:grid-cols-2 gap-4 h-auto overflow-hidden rounded-md bg-white bg-opacity-5"
+        key={p.title}
+      >
         <div className="p-2 flex flex-col justify-between">
           <div>
             <p className="text-xs">{p.category.join(" ")}</p>
@@ -111,8 +103,8 @@ const ProjectsContainer = () => {
               {p.description}
             </p>
             <div className="flex justify-end px-8 fill-slate-100">
-              {p.links.map((link) => (
-                <a href={link.ref} target="_blank">
+              {p.links.map((link, idx) => (
+                <a href={link.ref} target="_blank" key={`${p.title}-${idx}`}>
                   <div className="w-8 p-2 hover:opacity-90 opacity-70 transition-opacity transform duration-150">
                     {getSrcIcon(link.type)}
                   </div>
@@ -123,21 +115,7 @@ const ProjectsContainer = () => {
           <div className="sm:mt-6 text-xs opacity-30">{p.tags.join("  ")}</div>
         </div>
         {p.category.includes("Featured") && (
-          <div className="rounded-md shadow-md overflow-hidden border-white border-2 border-opacity-10 opacity-70 hover:opacity-90  transition-opacity transform duration-300 ease-in-out ">
-            <div
-              className={`flex -translate-x-[${id}00%] transform-gpu transition-all duration-1000`}
-            >
-              {projectImages.map((src) => (
-                <Image
-                  className="rounded-md w-full h-full object-cover border border-black"
-                  src={src}
-                  alt="Your Name"
-                  width={1920}
-                  height={1080}
-                />
-              ))}
-            </div>
-          </div>
+          <Slider id={1} images={projectImages || []} />
         )}
       </div>
     )
@@ -148,5 +126,52 @@ const ProjectsContainer = () => {
         {getProjects().map(renderProject)}
       </div>
     </>
+  )
+}
+
+const Slider = ({ images }: { id: number; images: string[] }) => {
+  const [id, setId] = useState(0)
+  const [isIncrement, setIsIncrement] = useState(true)
+  const sliderRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const interval = setInterval(moveToNextSlid, 2000)
+    return () => clearInterval(interval)
+  }, [id])
+
+  const getWithd = () =>
+    sliderRef.current ? sliderRef.current.clientWidth : 100
+
+  const moveToNextSlid = () => {
+    if (id === images.length - 2) {
+      setIsIncrement(false)
+    } else if (id === 0) {
+      setIsIncrement(true)
+    }
+    setId(isIncrement ? id + 1 : id - 1)
+  }
+  return (
+    <div
+      className={`rounded-md shadow-md overflow-hidden border-white border-2 border-opacity-10 opacity-70 hover:opacity-90  transition-opacity transform duration-300 ease-in-out w-[${getWithd()}px] h-auto`}
+      ref={sliderRef}
+    >
+      <div
+        style={{
+          transform: `translateX(-${id * getWithd()}px)`,
+        }}
+        className={`flex  transform-gpu transition-all duration-1000`}
+      >
+        {images.map((src, idx) => (
+          <Image
+            className="rounded-md w-full h-full object-cover border border-black"
+            src={src}
+            alt={src}
+            width={1920}
+            height={1080}
+            key={idx}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
