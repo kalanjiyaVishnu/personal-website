@@ -102,7 +102,7 @@ const ProjectsContainer = () => {
             <p className="text-sm mt-4 px-4 border-teal-300 border-l-4">
               {p.description}
             </p>
-            <div className="flex justify-end px-8 fill-slate-100">
+            <div className="flex justify-end px-8">
               {p.links.map((link, idx) => (
                 <a
                   href={link.ref}
@@ -110,14 +110,14 @@ const ProjectsContainer = () => {
                   target="_blank"
                   key={`${p.title}-${idx}`}
                 >
-                  <div className="w-8 p-2 hover:opacity-90 opacity-70 transition-opacity transform duration-150">
+                  <div className="w-8 p-2 fill-slate-100 hover:fill-slate-200 hover:opacity-90 opacity-70 transition-all transform duration-150">
                     {getSrcIcon(link.type)}
                   </div>
                 </a>
               ))}
             </div>
           </div>
-          <div className="sm:mt-6 text-xs opacity-30">{p.tags.join("  ")}</div>
+          <div className="sm:mt-6 text-xs opacity-30">{p.tags.join(", ")}</div>
         </div>
         {p.category.includes("Featured") && (
           <Slider id={1} images={projectImages || []} />

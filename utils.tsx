@@ -64,13 +64,16 @@ export const getProjects: () => Project[] = () => [
     ],
   },
   {
-    title: "Casa Retail Ai",
-    description: "A retail ai platform for retailers to manage their stores",
-    category: ["Full Stack", "Other"],
-    tags: ["React", "Nodejs", "Express", "MongoDB", "Firebase"],
+    title: "My Portfolio",
+    description: "Yes the current one you are looking at",
+    useCase: `Tried To build a community for anime - combined blog,chat,and search`,
+    category: ["Flexing"],
+    tags: ["Next", "Tailwindcss", "Typescript", "React"],
     links: [
-      { type: "github", ref: "https://casaretailai.com" },
-      { type: "live", ref: "https://casaretailai.com" },
+      {
+        type: "github",
+        ref: "https://github.com/kalanjiyaVishnu/personal-website",
+      },
     ],
   },
 ]
