@@ -139,10 +139,12 @@ const Slider = ({ images }: { id: number; images: string[] }) => {
   const [isIncrement, setIsIncrement] = useState(true)
   const sliderRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const interval = setInterval(moveToNextSlid, 2000)
+  useLayoutEffect(() => {
+    console.log('slider init')
+
+    const interval = setInterval(moveToNextSlid, 1000)
     return () => clearInterval(interval)
-  })
+  }, [id])
 
   const getWithd = () =>
     sliderRef.current ? sliderRef.current.clientWidth : 100
@@ -168,7 +170,7 @@ const Slider = ({ images }: { id: number; images: string[] }) => {
       >
         {images.map((src, idx) => (
           <Image
-            className="rounded-md w-full h-full object-cover border border-black"
+            className="rounded-md object-cover border border-black"
             src={src}
             alt={src}
             width={1920}
