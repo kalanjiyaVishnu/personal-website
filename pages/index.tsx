@@ -1,16 +1,15 @@
-import Image from "next/image"
-import { Skills } from "../components/Skills"
-import { Stepper } from "../components/Stepper"
-import { Title } from "../components/Title"
+import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
+import { Skills } from '../components/Skills'
+import { Stepper } from '../components/Stepper'
+import { Title } from '../components/Title'
 import {
   getProjectImages,
   getProjects,
   getSrcIcon,
   getTimeLines,
   type Project,
-} from "../utils"
-import _ from "lodash"
-import { useEffect, useRef, useState } from "react"
+} from '../utils'
 
 export default function Home() {
   return (
@@ -94,9 +93,9 @@ const ProjectsContainer = () => {
       >
         <div className="p-2 flex flex-col justify-between">
           <div>
-            <p className="text-xs">{p.category.join(" ")}</p>
+            <p className="text-xs">{p.category.join(' ')}</p>
             <h1 className="text-4xl font-medium relative">
-              {p.title}{" "}
+              {p.title}{' '}
               {/* <div className="absolute top-1/2 -translate-y-1/2 left-[43%] w-full h-1 bg-white"></div> */}
             </h1>
             <p className="text-sm mt-4 px-4 border-teal-300 border-l-4">
@@ -117,9 +116,9 @@ const ProjectsContainer = () => {
               ))}
             </div>
           </div>
-          <div className="sm:mt-6 text-xs opacity-30">{p.tags.join(", ")}</div>
+          <div className="sm:mt-6 text-xs opacity-30">{p.tags.join(', ')}</div>
         </div>
-        {p.category.includes("Featured") && (
+        {p.category.includes('Featured') && (
           <Slider id={1} images={projectImages || []} />
         )}
       </div>
@@ -139,10 +138,8 @@ const Slider = ({ images }: { id: number; images: string[] }) => {
   const [isIncrement, setIsIncrement] = useState(true)
   const sliderRef = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
-    console.log('slider init')
-
-    const interval = setInterval(moveToNextSlid, 1000)
+  useEffect(() => {
+    const interval = setInterval(moveToNextSlid, 2000)
     return () => clearInterval(interval)
   }, [id])
 
