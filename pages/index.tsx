@@ -12,6 +12,7 @@ import {
 } from '../utils'
 import { Content } from '../components/Content'
 import { content } from '../constants'
+import { Contact } from '../components/Contact'
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Content {...content['SectionWhatDoIDO']} />
+      <Contact />
     </div>
   )
 }
