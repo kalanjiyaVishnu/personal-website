@@ -10,6 +10,8 @@ import {
   getTimeLines,
   type Project,
 } from '../utils'
+import { Content } from '../components/Content'
+import { content } from '../constants'
 
 export default function Home() {
   return (
@@ -32,6 +34,7 @@ export default function Home() {
       <Me />
       <Skills />
       <Projects />
+      <Content {...content['SectionWhatDoIDO']} />
     </div>
   )
 }
